@@ -1,0 +1,17 @@
+from collections import deque
+
+def construct_lexer_table():
+	out = dict()
+
+	out['0'] = deque()
+	out['0'].append(('0', 'Left', None, r'<'))
+	out['0'].append(('0', 'Right', None, r'>'))
+	out['0'].append(('0', 'Plus', None, r'\+'))
+	out['0'].append(('0', 'Minus', None, r'-'))
+	out['0'].append(('0', 'Print', None, r'\.'))
+	out['0'].append(('0', 'Read', None, r','))
+	out['0'].append(('0', 'OpenBrackets', None, r'\['))
+	out['0'].append(('0', 'CloseBrackets', None, r'\]'))
+	out['0'].append(('0', None, None, r'(a|[^a])'))
+
+	return out

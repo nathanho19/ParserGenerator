@@ -1,0 +1,1 @@
+This is a non-LR(1) grammar. The compiler should fail to construct a parser for this grammar. Therefore, no interpreter is supplied.

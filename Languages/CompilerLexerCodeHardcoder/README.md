@@ -1,0 +1,3 @@
+program('CompilerLexerCodeHardcoder', lexer_description_file_name, lexer_code_file_name) will write the lexer code .lc file at lexer_code_file_name for the lexer description in lexer_description_file_name.
+
+Note that if CompilerLexerCodeHardcoder.gc and CompilerGrammar.lc are both missing, this program calls CompilerGrammar to generate the Grammar and CompilerGrammar calls this program to generate CompilerGrammar.lc, so an infinite loop occurs.

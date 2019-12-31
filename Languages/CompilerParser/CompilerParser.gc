@@ -1,0 +1,35 @@
+import Parser
+
+def construct_grammar():
+    out = Parser.Grammar()
+
+    out.add_rule('MultipleNewLineDelimiter', ('SingleNewLineDelimiter',))
+    out.add_rule('MultipleNewLineDelimiter', ('MultipleNewLineDelimiter', 'SingleNewLineDelimiter'))
+
+    out.add_rule('DeclarationLHS', ('Word',))
+
+    out.add_rule('DeclarationRHS', ('RuleRHS',))
+
+    out.add_rule('DeclarationRHS', ('DeclarationRHS', 'DeclarationRHSOr', 'RuleRHS'))
+
+    out.add_rule('SymbolSequence', ('Word',))
+    out.add_rule('SymbolSequence', ('SymbolSequence', 'Word'))
+    out.add_rule('RuleRHS', ('SymbolSequence',))
+    out.add_rule('RuleRHS', ('EraseLexerToken',))
+
+    out.add_rule('Declaration', ('DeclarationLHS', 'DeclarationAssignment', 'DeclarationRHS'))
+
+    out.add_rule('Declarations', ('Declaration',))
+    out.add_rule('Declarations', ('Declarations', 'MultipleNewLineDelimiter', 'Declaration'))
+
+    out.set_start_symbol('Start')
+    out.add_rule('Start', ('Declarations',))
+    out.add_rule('Start', ('MultipleNewLineDelimiter', 'Declarations'))
+    out.add_rule('Start', ('MultipleNewLineDelimiter', 'Declarations', 'MultipleNewLineDelimiter'))
+    out.add_rule('Start', ('Declarations', 'MultipleNewLineDelimiter'))
+    out.erase('Start')
+    out.add_rule('Start', ('MultipleNewLineDelimiter',))
+
+    out.finalize_rules()
+    return out
+

@@ -1,0 +1,3 @@
+program('CompilerGrammarCodeHardcoder', grammar_description_file_name, grammar_code_file_name) will write the grammar code .gc file at grammar_code_file_name for the grammar description in grammar_description_file_name.
+
+Note that if CompilerGrammarCodeHardcoder.lc and CompilerLexer.gc are both missing, this program calls CompilerLexer to generate the Lexer and CompilerLexer calls this program to generate CompilerLexer.gc, so an infinite loop occurs.

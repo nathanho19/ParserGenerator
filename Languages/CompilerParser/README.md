@@ -1,0 +1,1 @@
+program('CompilerParser', grammar_description_file_name, _) will return the Grammar for the grammar described in grammar_description_file_name. The argument is ignored. The Grammar can be used to construct a Parser using CLR from Parser.py.

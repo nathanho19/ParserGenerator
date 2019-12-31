@@ -1,0 +1,17 @@
+import Parser
+
+def construct_grammar():
+    out = Parser.Grammar()
+    out.add_rule('Expression', ('OpenBrackets', 'Start', 'CloseBrackets'))
+    out.add_rule('Expression', ('Operation',))
+    out.add_rule('Operation', ('Left',))
+    out.add_rule('Operation', ('Minus',))
+    out.add_rule('Operation', ('Plus',))
+    out.add_rule('Operation', ('Print',))
+    out.add_rule('Operation', ('Read',))
+    out.add_rule('Operation', ('Right',))
+    out.add_rule('Start', ('Expression',))
+    out.add_rule('Start', ('Start', 'Expression'))
+    out.set_start_symbol('Start')
+    out.finalize_rules()
+    return out

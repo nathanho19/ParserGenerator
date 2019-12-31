@@ -1,0 +1,31 @@
+import os
+assert 'ERASE_SYMBOL' in os.environ
+ERASE_SYMBOL = os.environ['ERASE_SYMBOL']
+
+from collections import deque
+
+def construct_lexer_table():
+	out = dict()
+
+	out['0'] = deque()
+	out['0'].append(('0', None, None, r'[ \t\r\n]+'))
+	out['0'].append(('1', 'BeginState', r'\1', r'([A-Za-z0-9]+)[ \t]+'))
+
+	out['1'] = deque()
+	out['1'].append(('3', 'FailState', None, r'Fail[ \t]+'))
+	out['1'].append(('2', 'EndState', r'\1', r'([A-Za-z0-9]+)[ \t]+'))
+
+	out['2'] = deque()
+	out['2'].append(('3', 'WordWithExpandString', r'\1, \2', r'((?:[A-Z][a-z]*)+)\(([^\(\)\t\r\n]*)\)[ \t]+'))
+	out['2'].append(('3', None, None, r'(?:{:s})[ \t]+'.format(ERASE_SYMBOL)))
+	out['2'].append(('3', 'Word', r'\1', r'((?:[A-Z][a-z]*)+)[ \t]+'))
+
+	out['3'] = deque()
+	out['3'].append(('0', 'Regex', r'', r'(?:{:s})[\r\n]'.format(ERASE_SYMBOL)))
+	out['3'].append(('4', 'Regex', r'\1', r'([^\r\n]*[^ \t\r\n])'))
+
+	out['4'] = deque()
+	out['4'].append((None, None, None, r'[ \t]'))
+	out['4'].append(('0', None, None, r''))
+
+	return out

@@ -1,0 +1,13 @@
+import Parser
+
+def construct_grammar():
+    out = Parser.Grammar()
+    out.add_rule('Start', ('Start', 'Transition'))
+    out.add_rule('Start', ('Transition',))
+    out.add_rule('Transition', ('BeginState', 'EndState', 'Regex'))
+    out.add_rule('Transition', ('BeginState', 'EndState', 'Word', 'Regex'))
+    out.add_rule('Transition', ('BeginState', 'EndState', 'WordWithExpandString', 'Regex'))
+    out.add_rule('Transition', ('BeginState', 'FailState', 'Regex'))
+    out.set_start_symbol('Start')
+    out.finalize_rules()
+    return out

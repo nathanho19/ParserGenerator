@@ -1,0 +1,1 @@
+program('CompilerLexer', lexer_description_file_name, _) will return the lexer table for the lexer described in lexer_description_file_name. The argument is ignored. The lexer table can be used to construct a Lexer using LexerFactory.from_table from Lexer.py. The lexer table will be finalized.
