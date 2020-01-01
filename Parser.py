@@ -312,8 +312,8 @@ class Grammar:
         write_file.close()
         
         # Assert that saved rules match current rules
-        import ProgramRunner
-        other = ProgramRunner.program('CompilerParser', file_name, '')
+        import Compiler
+        other = Compiler.program('CompilerParser', file_name, '')
         assert other._rules == self._rules
 
 class CLR:
