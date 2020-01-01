@@ -53,7 +53,7 @@ def program(programming_language_name, program_file_name, program_arg):
         if DEBUG:
             print('Loaded  {:s} lexer description from {:s}.'.format(programming_language_name, lexer_file_name))
     else:
-        raise RuntimeError('{:s} ;exer file missing.'.format(programming_language_name))
+        raise RuntimeError('{:s} lexer file missing.'.format(programming_language_name))
 
     # Lex phase
     token_stream = program_lexer.lex_file(program_file_name)
