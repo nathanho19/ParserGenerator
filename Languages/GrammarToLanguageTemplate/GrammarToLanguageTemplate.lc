@@ -1,0 +1,18 @@
+import os
+assert 'ERASE_SYMBOL' in os.environ
+ERASE_SYMBOL = os.environ['ERASE_SYMBOL']
+
+from collections import deque
+
+def construct_lexer_table():
+	out = dict()
+
+	out['0'] = deque()
+	out['0'].append(('0', None, None, r'[ \t]+'))
+	out['0'].append(('0', 'DeclarationAssignment', None, r'='))
+	out['0'].append(('0', 'DeclarationRHSOr', None, r'\|'))
+	out['0'].append(('0', 'EraseLexerToken', None, r'(?:{:s})'.format(ERASE_SYMBOL)))
+	out['0'].append(('0', 'SingleNewLineDelimiter', None, r'[\r\n]'))
+	out['0'].append(('0', 'Word', r'\1', r'((?:[A-Z][a-z]*)+)'))
+
+	return out
