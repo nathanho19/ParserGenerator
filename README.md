@@ -5,7 +5,7 @@ This repo hosts a tool for rapidly implementing programming language interpreter
 To recognize tokens, the lexer uses python's re module for regular expresions. The parser uses the LR(1) parser technique. The interpreter is its own python module.
 
 ## How do I write my own programming language?
-See [doc/WritingYourOwnProgrammingLanguage.md](doc/WritingYourOwnProgrammingLanguage.md)
+See [doc/WritingYourOwnProgrammingLanguage.md](/doc/WritingYourOwnProgrammingLanguage.md)
 
 ## What are all the new file types?
 File extensions are only by convention. However, currently, the compiler recognizes file types by file extension.
@@ -21,6 +21,6 @@ Extension | File Type | Description
 
 ## I'm a power user. What can I do?
 You can:
-* Turn verbose logging on and off through the DEBUG variable in [Compiler.py](Compiler.py) and [Lexer.py](Lexer.py).
-* Change the file search locations in [Compiler.py](Compiler.py).
-* Modify the inner workings of the backend to accept new types of lexer descriptions, grammar descriptions, and interpreters. The backend is described in [doc/BackendDetails.md](doc/BackendDetails.md).
+* Turn verbose logging on and off through the DEBUG variable in [Compiler.py](/Compiler.py) and [Lexer.py](/Lexer.py).
+* Change the file search locations in [Compiler.py](/Compiler.py).
+* Modify the inner workings of the backend to accept new types of lexer descriptions, grammar descriptions, and interpreters. The backend is described in [doc/BackendDetails.md](/doc/BackendDetails.md).
