@@ -291,6 +291,8 @@ class Grammar:
         return out
 
     def save_rules(self, file_name):
+        assert file_name
+        assert file_name[-1] != '/' and file_name[-1] != '\\'
         assert self._grammar_is_finalized
     
         # Compute string representation of rules
@@ -305,6 +307,11 @@ class Grammar:
                     write_string += ' '.join(rule[1])
                 else:
                     write_string += ERASE_SYMBOL
+                    
+        try:
+            os.makedirs(os.path.dirname(file_name))
+        except FileExistsError:
+            pass
                 
         # Write rules
         write_file = open(file_name, 'w')
