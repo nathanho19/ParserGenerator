@@ -56,6 +56,10 @@ def interpret(ast, arg):
     grammar.set_start_symbol('Start')
     grammar.finalize_rules()
     
+    # Assert that grammar is parsable
+    parser = Parser.CLR(grammar)
+    parser.construct()
+    
     # Create language directory
     try:
         os.makedirs('Languages/{0:s}/'.format(arg))
