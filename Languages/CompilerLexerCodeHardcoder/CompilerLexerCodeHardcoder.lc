@@ -9,6 +9,8 @@ def construct_lexer_table():
 
 	out['0'] = deque()
 	out['0'].append(('0', None, None, r'[ \t\r\n]+'))
+	out['0'].append(('0', None, None, r'#[^\r\n]+'))
+	out['0'].append(('5', None, None, r'/\*'))
 	out['0'].append(('1', 'BeginState', r'\1', r'([A-Za-z0-9]+)[ \t]+'))
 
 	out['1'] = deque()
@@ -27,5 +29,13 @@ def construct_lexer_table():
 	out['4'] = deque()
 	out['4'].append((None, None, None, r'[ \t]'))
 	out['4'].append(('0', None, None, r''))
+
+	out['5'] = deque()
+	out['5'].append(('6', None, None, r'\*/'))
+	out['5'].append(('5', None, None, r'(a|[^a])'))
+
+	out['6'] = deque()
+	out['6'].append(('6', None, None, r'[ \t]'))
+	out['6'].append(('0', None, None, r'[\r\n]'))
 
 	return out
