@@ -46,7 +46,12 @@ class Lexer:
                     found_match = True
                     break
             if not found_match:
-                print(content[index: index + 30])
+                print()
+                print('Lexer dump begin.')
+                print('State: {:s}'.format(state))
+                print('Stream: {!s:s}'.format(out))
+                print('Unparsed input: {:s}'.format(content[index:]))
+                print('Lexer dump end.')
                 raise RuntimeError('Lexer failed to find a match.')
 
         return out
