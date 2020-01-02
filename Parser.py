@@ -332,10 +332,10 @@ class CLR:
 
         automaton, goto_memoization = self.compute_automaton()
         
-        self.tables = self.compute_tables(automaton, goto_memoization)
         self.automaton = automaton
         self.goto_memoization = goto_memoization
-
+        self.tables = self.compute_tables(automaton, goto_memoization)
+        
     def create_item(lhs, rhs, lookahead):
         assert isinstance(rhs, tuple)
         assert ERASE_SYMBOL not in rhs
